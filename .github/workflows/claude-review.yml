@@ -1,0 +1,28 @@
+name: Claude PR Review (Concise)
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm i --frozen-lockfile=false
+      - name: Claude Code Headless Review
+        run: |
+          claw -p "
+          You are a concise PR reviewer.
+          Goals:
+          - Identify security risks, missing tests, perf regressions.
+          - Be brief: max 10 bullets.
+          - Include actionable file:line hints when possible.
+          Review the current PR diff and output markdown for a PR comment."
+          --output-format=stream-json 

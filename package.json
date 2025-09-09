@@ -1,0 +1,25 @@
+{
+  "name": "getaway-sg",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.6.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "db:migrate": "pnpm --filter @getaway/api db:migrate",
+    "seed:holidays": "pnpm --filter @getaway/api seed:holidays"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+} 

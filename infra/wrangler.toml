@@ -1,0 +1,47 @@
+name = "getaway-sg-api"
+main = "apps/api/src/index.ts"
+compatibility_date = "2024-08-01"
+workers_dev = true
+
+[vars]
+API_PREFIX = "/api"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "getaway_sg_db"
+database_id = "local-getaway-sg-db"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "local-cache"
+
+[[queues.producers]]
+binding = "ALERT_QUEUE"
+queue = "getaway-alerts"
+
+[triggers]
+crons = ["*/30 * * * *"] 
+
+#[ Production environment ]
+[env.production]
+name = "getaway-sg-api"
+main = "apps/api/src/index.ts"
+workers_dev = false
+
+[env.production.vars]
+API_PREFIX = "/api"
+
+[[env.production.d1_databases]]
+binding = "DB"
+# Replace with your real production database
+database_name = "getaway_sg_db"
+database_id = "REPLACE_WITH_PRODUCTION_D1_ID"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+# Replace with your real KV namespace id
+id = "REPLACE_WITH_PRODUCTION_KV_ID"
+
+[[env.production.queues.producers]]
+binding = "ALERT_QUEUE"
+queue = "getaway-alerts"
