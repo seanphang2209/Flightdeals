@@ -1,4 +1,4 @@
-name: Deploy API Worker
+name: Deploy API (Wrangler)
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
     paths:
       - 'apps/api/**'
       - 'infra/wrangler.toml'
-      - 'pnpm-lock.yaml'
       - '.github/workflows/deploy-api.yml'
   workflow_dispatch:
 
@@ -16,26 +15,23 @@ jobs:
     permissions:
       contents: read
       id-token: write
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+      - uses: pnpm/action-setup@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
-      - name: Deploy to Cloudflare (production)
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Build API
+        run: pnpm --filter @getaway/api build
+
+      - name: Deploy with Wrangler (production)
         run: pnpm --filter @getaway/api exec wrangler deploy --env production --config infra/wrangler.toml | cat
