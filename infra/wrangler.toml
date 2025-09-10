@@ -35,12 +35,12 @@ API_PREFIX = "/api"
 binding = "DB"
 # Replace with your real production database
 database_name = "getaway_sg_db"
-database_id = "REPLACE_WITH_PRODUCTION_D1_ID"
+database_id = "bd895f70-fb90-4b94-8a19-0bd95fdb21fc"
 
 [[env.production.kv_namespaces]]
 binding = "CACHE"
 # Replace with your real KV namespace id
-id = "REPLACE_WITH_PRODUCTION_KV_ID"
+id = "0d3320effae0494ab0921b7d4d436f18"
 
 [[env.production.queues.producers]]
 binding = "ALERT_QUEUE"
