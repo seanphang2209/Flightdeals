@@ -4,7 +4,7 @@ export default function App() {
   const [tab, setTab] = useState<'home' | 'results' | 'tracks'>('home');
   return (
     <div className="mx-auto max-w-md p-4 text-slate-900">
-      <header className="mb-4 text-center text-xl font-semibold">Getaway SG</header>
+      <header className="mb-4 text-center text-xl font-semibold">Getaway SG</header>{/* ci: trigger deploy-web workflow */}
       <nav className="mb-4 grid grid-cols-3 gap-2 text-sm">
         <button className={`rounded border p-2 ${tab==='home'?'bg-slate-900 text-white':''}`} onClick={() => setTab('home')}>Home</button>
         <button className={`rounded border p-2 ${tab==='results'?'bg-slate-900 text-white':''}`} onClick={() => setTab('results')}>Results</button>

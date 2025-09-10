@@ -45,3 +45,5 @@ id = "0d3320effae0494ab0921b7d4d436f18"
 [[env.production.queues.producers]]
 binding = "ALERT_QUEUE"
 queue = "getaway-alerts"
+
+# ci: trigger deploy-api workflow
