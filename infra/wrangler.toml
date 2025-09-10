@@ -1,7 +1,8 @@
 name = "getaway-sg-api"
-main = "apps/api/src/index.ts"
+main = "../apps/api/src/index.ts"
 compatibility_date = "2024-08-01"
 workers_dev = true
+assets = { directory = "../apps/web/dist" }
 
 [vars]
 API_PREFIX = "/api"
@@ -15,9 +16,10 @@ database_id = "local-getaway-sg-db"
 binding = "CACHE"
 id = "local-cache"
 
-[[queues.producers]]
-binding = "ALERT_QUEUE"
-queue = "getaway-alerts"
+## Queues disabled for current plan
+# [[queues.producers]]
+# binding = "ALERT_QUEUE"
+# queue = "getaway-alerts"
 
 [triggers]
 crons = ["*/30 * * * *"] 
@@ -25,8 +27,9 @@ crons = ["*/30 * * * *"]
 #[ Production environment ]
 [env.production]
 name = "getaway-sg-api"
-main = "apps/api/src/index.ts"
-workers_dev = false
+main = "../apps/api/src/index.ts"
+workers_dev = true
+assets = { directory = "../apps/web/dist" }
 
 [env.production.vars]
 API_PREFIX = "/api"
@@ -42,8 +45,9 @@ binding = "CACHE"
 # Replace with your real KV namespace id
 id = "0d3320effae0494ab0921b7d4d436f18"
 
-[[env.production.queues.producers]]
-binding = "ALERT_QUEUE"
-queue = "getaway-alerts"
+## Queues disabled for current plan
+# [[env.production.queues.producers]]
+# binding = "ALERT_QUEUE"
+# queue = "getaway-alerts"
 
 # ci: trigger deploy-api workflow

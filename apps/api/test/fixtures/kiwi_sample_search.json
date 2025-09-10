@@ -1,0 +1,30 @@
+{
+  "currency": "USD",
+  "data": [
+    {
+      "price": 120,
+      "deep_link": "https://kiwi.com/book/abc",
+      "airlines": ["SQ"],
+      "duration": { "total": 14400 },
+      "bags_price": { "1": 0 },
+      "route": [
+        { "local_departure": "2025-02-14T08:00:00", "airline": "SQ" },
+        { "local_arrival": "2025-02-17T20:00:00", "airline": "SQ" }
+      ]
+    },
+    {
+      "price": 200,
+      "deep_link": "https://kiwi.com/book/def",
+      "airlines": ["TR"],
+      "duration": { "total": 21600 },
+      "bags_price": { "1": 35 },
+      "route": [
+        { "local_departure": "2025-02-14T09:00:00", "airline": "TR" },
+        { "local_arrival": "2025-02-17T22:00:00", "airline": "TR" }
+      ]
+    }
+  ],
+  "search_params": { "curr": "USD" }
+}
+
+

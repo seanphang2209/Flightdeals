@@ -13,13 +13,16 @@
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
+    "check": "pnpm typecheck && pnpm lint && vitest run apps/api/test --run",
     "db:migrate": "pnpm --filter @getaway/api db:migrate",
     "seed:holidays": "pnpm --filter @getaway/api seed:holidays"
   },
   "devDependencies": {
+    "@types/node": "^24.3.1",
     "eslint": "^8.57.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "wrangler": "^4.35.0"
   }
-} 
+}

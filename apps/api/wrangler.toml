@@ -1,0 +1,43 @@
+name = "tripz-api"
+main = "src/index.ts"
+compatibility_date = "2025-09-10"
+compatibility_flags = []
+
+[vars]
+FLIGHT_API_BASE = "https://tequila-api.kiwi.com"   # override in prod
+ALERT_BRAND = "Tripz"
+ALERT_FROM = "alerts@tripz.app"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tripz-db"
+database_id = "D1_DB_ID_PLACEHOLDER"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "KV_NAMESPACE_ID_PLACEHOLDER"
+
+[[queues.producers]]
+binding = "ALERT_QUEUE"
+queue = "tripz-alert-queue"
+
+[[queues.consumers]]
+queue = "tripz-alert-queue"
+max_batch_size = 50
+max_batch_timeout = 60
+max_retries = 3
+dead_letter_queue = "tripz-alert-dlq"
+
+[triggers]
+crons = ["*/30 * * * *"]
+
+[observability]
+enabled = true
+
+[env.dev.vars]
+NODE_ENV = "development"
+
+[env.production.vars]
+NODE_ENV = "production"
+
+

@@ -8,10 +8,13 @@ export type Env = {
   API_PREFIX: string;
 };
 
-const app = new Hono<{ Bindings: Env }>();
-app.basePath('/api');
+const app = new Hono<{ Bindings: Env }>().basePath('/api');
+
+// Simple root for sanity
+app.get('/', (c) => c.text('ok'));
 
 app.get('/health', (c: Context<{ Bindings: Env }>) => c.json({ ok: true }));
+app.get('/health2', (c) => c.json({ ok: true, v: 2 }));
 
 app.get('/holidays/sg', async (c: Context<{ Bindings: Env }>) => {
   const { results } = await c.env.DB.prepare(
@@ -99,4 +102,8 @@ app.delete('/tracks/:id', async (c) => {
   return c.json({ ok: true });
 });
 
-export default app; 
+export default {
+  fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    return app.fetch(request, env, ctx);
+  },
+};

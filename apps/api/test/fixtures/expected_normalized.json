@@ -1,0 +1,26 @@
+[
+  {
+    "price": 160,
+    "currency": "SGD",
+    "airline": "SQ",
+    "durationMinutes": 240,
+    "departISO": "2025-02-14T08:00:00",
+    "returnISO": "2025-02-17T20:00:00",
+    "stops": 1,
+    "bookingUrl": "https://kiwi.com/book/abc",
+    "baggageIncluded": true
+  },
+  {
+    "price": 267,
+    "currency": "SGD",
+    "airline": "TR",
+    "durationMinutes": 360,
+    "departISO": "2025-02-14T09:00:00",
+    "returnISO": "2025-02-17T22:00:00",
+    "stops": 1,
+    "bookingUrl": "https://kiwi.com/book/def",
+    "baggageIncluded": false
+  }
+]
+
+

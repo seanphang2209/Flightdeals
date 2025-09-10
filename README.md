@@ -1,4 +1,4 @@
-# Getaway SG (MVP)
+# Tripz (MVP)
 
 Monorepo: Cloudflare-first, fast edge worker + Pages web app.
 
@@ -24,11 +24,13 @@ pnpm dev
 # API + Web start; wrangler provides local D1/KV bindings
 ```
 
-## Database
+## Data / Database
 ```bash
 pnpm db:migrate
 pnpm seed:holidays
 ```
+
+- 2025 Singapore public holidays are seeded via `004_seed_sg_public_holidays_2025.sql` sourced from MOM (press release “Public Holidays for 2025”, 5 Aug 2024). Update annually.
 
 ## Env (.dev.vars)
 ```

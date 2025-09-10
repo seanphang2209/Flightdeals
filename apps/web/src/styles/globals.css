@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: theme(colors.brand.bg);
+  --fg: #E5E7EB;
+  --muted: theme(colors.brand.muted);
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.card {
+  @apply rounded-2xl bg-surface-2 shadow-soft border border-surface-3/50;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium
+         bg-brand text-white hocus:opacity-90 active:opacity-80 transition;
+}
+
+

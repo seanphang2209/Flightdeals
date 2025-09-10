@@ -19,9 +19,10 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240729.0",
+    "eslint": "^8.57.0",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5",
-    "eslint": "^8.57.0"
+    "wrangler": "^4.35.0"
   }
-} 
+}
