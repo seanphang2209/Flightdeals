@@ -2,7 +2,6 @@ name = "getaway-sg-api"
 main = "../apps/api/src/index.ts"
 compatibility_date = "2024-08-01"
 workers_dev = true
-assets = { directory = "../apps/web/dist" }
 
 [vars]
 API_PREFIX = "/api"
@@ -29,7 +28,6 @@ crons = ["*/30 * * * *"]
 name = "getaway-sg-api"
 main = "../apps/api/src/index.ts"
 workers_dev = true
-assets = { directory = "../apps/web/dist" }
 
 [env.production.vars]
 API_PREFIX = "/api"

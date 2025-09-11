@@ -1,5 +1,18 @@
 import type { FlightSearchParams, FlightOption } from "../../types/flight";
 
+export type Env = {
+  DB: D1Database;
+  CACHE: KVNamespace;
+  ALERT_QUEUE: Queue<any>;
+  API_PREFIX: string;
+  NODE_ENV?: string;
+  SENTRY_DSN?: string;
+  CF_REGION?: string;
+  FLIGHT_API_BASE?: string;
+  FLIGHT_API_KEY?: string;
+  EXR_BASE?: string;
+};
+
 type FxRates = Record<string, number>;
 
 async function getFxToSGD(env: Env, from: string): Promise<number> {
